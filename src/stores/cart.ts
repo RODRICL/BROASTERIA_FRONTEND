@@ -59,7 +59,7 @@ export const useCartStore = defineStore('cart', {
 
         // Crear el objeto de venta
         const ventaData = {
-          idUsuario: authStore.userId, // Obtener idUsuario desde el store de auth
+          idUsuario: authStore.user, // Obtener idUsuario desde el store de auth
           idCliente: this.idCliente, // Usamos el idCliente desde el estado
           montoTotal,
           productos: this.productos.map((producto) => ({

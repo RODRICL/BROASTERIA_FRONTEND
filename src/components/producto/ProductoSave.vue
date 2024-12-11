@@ -6,10 +6,11 @@ import http from '@/plugins/axios'
 import Button from 'primevue/button'
 import Dialog from 'primevue/dialog'
 import InputText from 'primevue/inputtext'
+import InputNumber from 'primevue/inputnumber'
 import Select from 'primevue/select'
 
+
 import { computed, ref, watch } from 'vue'
-import { ColorPicker } from 'primevue'
 
 const ENDPOINT = 'productos'
 const props = defineProps({
@@ -86,7 +87,7 @@ watch(
         <label for="categoria" class="form-label">Categoria</label>
         <Select
           id="categoria"
-          :options="categorias" :style="ColorPicker"
+          :options="categorias"
           v-model="producto.categoria"
           optionLabel="nombre"
           placeholder="Selecciona una categoria"
@@ -110,39 +111,36 @@ watch(
           v-model="producto.descripcion"
           class="form-input"
           autocomplete="off"
-          autofocus
         />
       </div>
       <div class="form-group">
         <label for="cantidadDisponible" class="form-label">Cantidad disponible</label>
-        <InputText
+        <InputNumber
           id="cantidadDisponible"
-          type="number"
-          v-model.number="producto.cantidadDisponible"
+          v-model="producto.cantidadDisponible"
           class="form-input"
           autocomplete="off"
         />
       </div>
       <div class="form-group">
         <label for="precio" class="form-label">Precio</label>
-        <InputText
+        <InputNumber
           id="precio"
-          type="number"
-          v-model.number="producto.precio"
+          v-model="producto.precio"
           class="form-input"
           autocomplete="off"
         />
       </div>
       <div class="flex justify-end gap-2">
         <Button
-        style="color: white;"
+          style="color: white;"
           type="button"
           label="Cancelar"
           icon="pi pi-times"
           severity="secondary"
           @click="dialogVisible = false"
         ></Button>
-        <Button type="button" label="Guardar" icon="pi pi-save" style="color: white;" @click="handleSave "></Button>
+        <Button type="button" label="Guardar" icon="pi pi-save" style="color: white;" @click="handleSave"></Button>
       </div>
     </Dialog>
   </div>
